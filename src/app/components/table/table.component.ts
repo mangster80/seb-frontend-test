@@ -22,6 +22,7 @@ export class TableComponent implements OnInit {
   getAccountData() {
     this.accountService.getAccountData().subscribe(data => {
       this.accountData = data;
+      localStorage.setItem('account-data', JSON.stringify(data));
       console.table(data);
     });
   }
