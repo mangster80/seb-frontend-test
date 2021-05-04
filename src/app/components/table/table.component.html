@@ -1,0 +1,26 @@
+<button type="button" class="btn btn-sm btn-primary mb-3" (click)="getAccountData()">Fetch Account Data</button>
+
+<div class="overflow-auto mb-3" *ngIf="!(loaderService.isLoading$ | async)">
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th [appSort]="accountData" data-order="desc" data-name="id" class="sort">Id</th>
+        <th>Account Id</th>
+        <th>Bank</th>
+        <th [appSort]="accountData" data-order="desc" data-name="balance" class="sort">Balance</th>
+        <th>Currency</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let data of accountData">
+        <th scope="row">{{data.id}}</th>
+        <td>{{data.accountId}}</td>
+        <td>{{data.bank}}</td>
+        <td>{{data.balance}}</td>
+        <td>{{data.currency }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="skeleton-loader skeleton-loader-table" *ngIf="loaderService.isLoading$ | async"></div>
