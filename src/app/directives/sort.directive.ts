@@ -11,7 +11,6 @@ export class SortDirective {
 
   @HostListener('click')
   sortData() {
-    localStorage.setItem('account-data', JSON.stringify(this.appSort));
     const sort = new Sort();
     const elem = this.elementRef.nativeElement;
     const order: string = elem.getAttribute('data-order');
@@ -23,5 +22,6 @@ export class SortDirective {
       this.appSort.sort(sort.startSort(property, order));
       elem.setAttribute('data-order', 'desc');
     }
+    localStorage.setItem('account-data', JSON.stringify(this.appSort));
   }
 }
